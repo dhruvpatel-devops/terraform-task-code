@@ -1,0 +1,47 @@
+name: Create all the terraform resources
+on:
+  workflow_dispatch:
+
+env:
+  GOOGLE_CREDENTIALS: ${{ secrets.TEST_CICD_SA }}
+  ENV: test
+
+jobs:
+  resource1:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.3.6
+
+      - name: "Creation Of VPC"
+        run: |
+          cd vpc/
+          terraform init -backend-config=vars/$ENV/backend.tfvars
+          terraform plan -input=false --var-file=vars/$ENV/terraform.tfvars -out=tf.plan
+          terraform apply tf.plan
+  resource2:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.3.6
+
+      - name: "Creation Of LoadBalancer,CloudRun and CloudSQL"
+        run: |
+          cd cloudrun/
+          terraform init -backend-config=vars/$ENV/backend.tfvars
+          terraform plan -input=false --var-file=vars/$ENV/terraform.tfvars -out=tf.plan
+          terraform apply tf.plan

@@ -1,0 +1,17 @@
+project_id                               = "project-poc-437304"
+region                                   = "us-central1"
+database_version                         = "MYSQL_5_6" #"MYSQL_8_0_31" 
+tier                                     = "db-f1-micro" #"db-perf-optimized-N-2"  #
+edition                                  = "ENTERPRISE"
+disk_autoresize                          = true
+disk_size                                = 10
+disk_type                                = "PD_SSD"
+db_name                                  = "sql-default"
+user_name                                = "user1"
+# network                                  = "projects/project-poc-437304/global/networks/default"
+cloudsql_name                            = "poc-test-sqldb"
+user_password                            = "qewrdgWEdqwRTY2397"
+subnetwork = "poc-test-subnet-1"
+network = "poc-test-vpc"
+prefix = "poc"
+env  = "test"

@@ -1,0 +1,14 @@
+prefix                                       = "poc"
+env                                          = "test"
+project_id                                   = "project-poc-437304"
+region                                       = "us-central1"
+subnetworks                                  = "poc-test-subnet-1"
+machine_type = "e2-medium"
+network = "poc-test-vpc"
+image = "ubuntu-os-cloud/ubuntu-2004-focal-v20220712"
+zone = "us-central1-a"
+size = 10
+type = "pd-ssd"
+source_ranges = ["0.0.0.0/0"]
+udp_ports = ["80", "8080", "1000-2000","22"]
+tcp_ports = ["80", "8080", "1000-2000","22"]
