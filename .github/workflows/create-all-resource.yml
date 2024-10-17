@@ -23,8 +23,8 @@ jobs:
       - name: "Creation Of VPC"
         run: |
           cd vpc/
-          terraform init -backend-config=vars/$ENV/backend.tfvars
-          terraform plan -input=false --var-file=vars/$ENV/terraform.tfvars -out=tf.plan
+          terraform init -backend-config=envs/$ENV/backend.tfvars
+          terraform plan -input=false --var-file=envs/$ENV/terraform.tfvars -out=tf.plan
           terraform apply tf.plan
   resource2:
     runs-on: ubuntu-latest
@@ -42,6 +42,6 @@ jobs:
       - name: "Creation Of LoadBalancer,CloudRun and CloudSQL"
         run: |
           cd cloudrun/
-          terraform init -backend-config=vars/$ENV/backend.tfvars
-          terraform plan -input=false --var-file=vars/$ENV/terraform.tfvars -out=tf.plan
+          terraform init -backend-config=envs/$ENV/backend.tfvars
+          terraform plan -input=false --var-file=envs/$ENV/terraform.tfvars -out=tf.plan
           terraform apply tf.plan
