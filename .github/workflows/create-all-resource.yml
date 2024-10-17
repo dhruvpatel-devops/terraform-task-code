@@ -7,7 +7,7 @@ env:
   ENV: test
 
 jobs:
-  resource1:
+  vpc:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -26,12 +26,12 @@ jobs:
           terraform init -backend-config=envs/$ENV/backend.tfvars
           terraform plan -input=false --var-file=envs/$ENV/terraform.tfvars -out=tf.plan
           terraform apply tf.plan
-  resource2:
+  lb-cloudrun-sql:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    needs: resource1 
+    needs: vpc 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -42,7 +42,7 @@ jobs:
 
       - name: "Creation Of LoadBalancer,CloudRun and CloudSQL"
         run: |
-          cd cloudrun/
+          cd lb-cloudrun-sql/
           terraform init -backend-config=envs/$ENV/backend.tfvars
           terraform plan -input=false --var-file=envs/$ENV/terraform.tfvars -out=tf.plan
           terraform apply tf.plan
