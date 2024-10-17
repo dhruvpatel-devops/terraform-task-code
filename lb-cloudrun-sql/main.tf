@@ -15,7 +15,7 @@ resource "google_secret_manager_secret" "secret" {
 
 # Store a secret version in Secret Manager
 resource "google_secret_manager_secret_version" "secret-version-data" {
-  
+
   secret      = google_secret_manager_secret.secret.name
   secret_data = "secret-data"
 }

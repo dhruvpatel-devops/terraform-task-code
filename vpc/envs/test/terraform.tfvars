@@ -1,4 +1,4 @@
-vpc_name = "poc-test-vpc"
+vpc_name                                     = "poc-test-vpc"
 prefix                                       = "poc"
 env                                          = "test"
 project_id                                   = "project-poc-437304"
