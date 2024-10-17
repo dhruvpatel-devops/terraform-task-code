@@ -1,7 +1,10 @@
-variable "existing_service_account_name" {
+variable "existing_service_account" {
   description = "Insert Service account to use service."
   default     = ""
 }
+# variable "existing_service_account" {
+#   default = var.existing_service_account_name
+# }
 
 variable "secret_name" {
   description = "Give secret name"

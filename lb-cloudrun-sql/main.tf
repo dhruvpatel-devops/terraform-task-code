@@ -2,9 +2,7 @@
 # data "google_project" "project" {}
 
 # Use the existing Service Account for Cloud Run
-variable "existing_service_account" {
-  default = var.existing_service_account_name
-}
+
 
 # Create a Secret Manager secret
 resource "google_secret_manager_secret" "secret" {

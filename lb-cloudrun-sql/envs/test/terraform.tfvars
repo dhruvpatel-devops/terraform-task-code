@@ -1,4 +1,4 @@
-existing_service_account_name                            = "poc-terraform-access-service-a@project-poc-437304.iam.gserviceaccount.com"
+existing_service_account                            = "poc-terraform-access-service-a@project-poc-437304.iam.gserviceaccount.com"
 secret_name                                              = "secret-demo"
 sql_instance_name                                        = "cloudrun-sql"
 region                                                   = "us-central1"

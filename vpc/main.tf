@@ -1,13 +1,13 @@
-  resource "google_compute_network" "this" {
-    project                                     = var.project_id             
-    name                                        = var.vpc_name
-    delete_default_routes_on_create             = false
-    auto_create_subnetworks                     = false
-    routing_mode                                = "REGIONAL"
-  }
+resource "google_compute_network" "this" {
+  project                                     = var.project_id             
+  name                                        = var.vpc_name
+  delete_default_routes_on_create             = false
+  auto_create_subnetworks                     = false
+  routing_mode                                = "REGIONAL"
+}
 
   # SUBNETS
-  resource"google_compute_subnetwork""this" {
+resource"google_compute_subnetwork""this" {
       project                                     = var.project_id   
       count = length(var.subnetworks)
       name                                     = var.subnetworks[count.index].name
